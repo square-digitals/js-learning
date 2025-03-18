@@ -6,31 +6,39 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Multiplier</title>
+    <title>Multiplication App</title>
     <link
       rel="stylesheet"
       href="style.css"
     />
   </head>
   <body>
-    <h2>Digital Clock Test</h2>
-    <div class="clock">
-      <div>
-        <span id="hour">00</span>
-        <span class="text">Hours</span.text>
-      </div>
-      <div>
-        <span id="minutes">00</span>
-        <span class="text">Minutes</span.text>
-      </div>
-      <div>
-        <span id="seconds">00</span>
-        <span class="text">Seconds</span.text>
-      </div>
-      <div>
-        <span id="ampm">AM</span>
-      </div>
-    </div>
+    <form
+      class="form"
+      id="form"
+    >
+      <h4
+        class="score"
+        id="score"
+      >
+        Score: 0
+      </h4>
+      <h1 id="question">What is 1 multiply by 2</h1>
+      <input
+        type="text"
+        class="input"
+        id="input"
+        placeholder="enter your answer"
+        autofocus
+        autocomplete="off"
+      />
+      <button
+        type="submit"
+        class="btn"
+      >
+        Submit
+      </button>
+    </form>
 
     <script src="/index.js"></script>
   </body>

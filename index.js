@@ -1,30 +1,33 @@
-const hourEl = document.getElementById('hour')
-const minuteEl = document.getElementById('minutes')
-const secondEl = document.getElementById('seconds')
-const ampmEl = document.getElementById('ampm')
+const num1 = Math.ceil(Math.random() * 10)
+const num2 = Math.ceil(Math.random() * 10)
+const formEl = document.getElementById('form')
+const inputEl = document.getElementById('input')
+let score = JSON.parse(localStorage.getItem('score'))
+const scoreEl = document.getElementById('score')
 
-function updateClock() {
-  let h = new Date().getHours()
-  let m = new Date().getMinutes()
-  let s = new Date().getSeconds()
-  let ampm = 'AM'
-
-  if (h > 12) {
-    h = h - 12
-    ampm = 'PM'
-  }
-
-  h = h < 10 ? '0' + h : h
-  m = m < 10 ? '0' + m : m
-  s = s < 10 ? '0' + s : s
-
-  hourEl.innerText = h
-  minuteEl.innerText = m
-  secondEl.innerText = s
-  ampmEl.innerText = ampm
-  setTimeout(() => {
-    updateClock()
-  }, 1000)
+if (!score) {
+  score = 0
 }
 
-updateClock()
+scoreEl.innerText = `score: ${score}`
+
+const questionEl = document.getElementById('question')
+
+questionEl.innerText = `What is ${num1} multiply by ${num2}?`
+
+const correctAns = num1 * num2
+
+formEl.addEventListener('submit', () => {
+  const userAns = +inputEl.value
+  if (userAns === correctAns) {
+    score++
+    updateLocalStorage()
+  } else {
+    score--
+    updateLocalStorage()
+  }
+})
+
+function updateLocalStorage() {
+  localStorage.setItem('score', JSON.stringify(score))
+}
